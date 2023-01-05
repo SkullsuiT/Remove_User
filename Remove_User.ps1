@@ -27,4 +27,4 @@
     $acl | Set-Acl $User
 
 # Suppression de ce dossier
-Get-ChildItem -Path $User -Recurse | Remove-Item -Recurse -Force
+Get-ChildItem -Path $User | Remove-Item -Recurse -Force
