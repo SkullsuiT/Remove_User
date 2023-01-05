@@ -29,4 +29,4 @@
 Pause
 
 # Suppression de ce dossier
-Get-ChildItem -Path $User -Recurse | Remove-Item -Force
+Get-ChildItem -Path $User -Recurse | Remove-Item Recurse -Force
