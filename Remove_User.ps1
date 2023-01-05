@@ -11,6 +11,7 @@
         $UserACL.Description = "Choisissez l'utilisateur"
         $UserACL.ShowNewFolderButton = $true
         $UserACL.SelectedPath = $RootUserACL
+        $UserACL.ShowDialog((New-Object System.Windows.Forms.Form -Property @{TopMost = $true}))
         
         $User = $UserACL.SelectedPath
 
