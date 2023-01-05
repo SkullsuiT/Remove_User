@@ -26,7 +26,5 @@
 # Appliquer les droits au dossier
     $acl | Set-Acl $User
 
-Pause
-
 # Suppression de ce dossier
-Get-ChildItem -Path $User -Recurse | Remove-Item Recurse -Force
+Get-ChildItem -Path $User -Recurse | Remove-Item -Recurse -Force
