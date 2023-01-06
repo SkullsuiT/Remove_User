@@ -6,14 +6,14 @@
     Add-Type -AssemblyName System.Drawing
 
 # Récupération du dossier utilisateur
-    $RootUserACL = "C:\Users\"
-        $UserACL = New-Object System.Windows.Forms.FolderBrowserDialog
-        $UserACL.Description = "Choisissez l'utilisateur"
-        $UserACL.ShowNewFolderButton = $true
-        $UserACL.SelectedPath = $RootUserACL
-        $UserACL.ShowDialog((New-Object System.Windows.Forms.Form -Property @{TopMost = $true}))
+    $RootFolder = "C:\Users\"
+        $UserFolder = New-Object System.Windows.Forms.FolderBrowserDialog
+        $UserFolder.Description = "Choisissez l'utilisateur"
+        $UserFolder.ShowNewFolderButton = $true
+        $UserFolder.SelectedPath = $RootUserFolder
+        $UserFolder.ShowDialog((New-Object System.Windows.Forms.Form -Property @{TopMost = $true}))
         
-        $User = $UserACL.SelectedPath
+        $User = $UserFolder.SelectedPath
 
 # Récupération des ACL du dossier sélectionné
     $acl = Get-Acl $User
@@ -27,4 +27,11 @@
     $acl | Set-Acl $User
 
 # Suppression de ce dossier
-Get-ChildItem -Path $User | Remove-Item -Recurse -Force
+$count = 0
+while (($count -ne 5) -and (Get-Item -Path $User $true))
+{
+    $count++;
+    {
+        Get-ChildItem -Path $User | Remove-Item -Recurse -Force
+    }
+}
