@@ -10,7 +10,7 @@
         $UserFolder = New-Object System.Windows.Forms.FolderBrowserDialog
         $UserFolder.Description = "Choisissez l'utilisateur"
         $UserFolder.ShowNewFolderButton = $true
-        $UserFolder.SelectedPath = $RootUserFolder
+        $UserFolder.SelectedPath = $RootFolder
         $UserFolder.ShowDialog((New-Object System.Windows.Forms.Form -Property @{TopMost = $true}))
         
         $User = $UserFolder.SelectedPath
