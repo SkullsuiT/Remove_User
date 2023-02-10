@@ -27,11 +27,15 @@
     $acl | Set-Acl $User
 
 # Suppression de ce dossier
-$count = 0
-while (($count -ne 5) -and (Get-Item -Path $User $true))
-{
-    $count++;
+    $count = 0
+    taskkill /F /IM explorer.exe
+    while (($count -ne 5) -and (Get-Item -Path $User $true))
     {
-        Get-ChildItem -Path $User | Remove-Item -Recurse -Force
+        
+        $count++;
+        {
+            Get-ChildItem -Path $User | Remove-Item -Recurse -Force
+            Start-Sleep -Milliseconds 100
+        }
+        Start-Process explorer
     }
-}
