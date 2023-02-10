@@ -28,14 +28,14 @@
 
 # Suppression de ce dossier
     $count = 0
-    taskkill /F /IM explorer.exe
-    while (($count -ne 5) -and (Get-Item -Path $User $true))
+    # taskkill /F /IM explorer.exe
+    while (($count -ne 5) -and (Get-Item -Path $User))
     {
         
         $count++;
         {
-            Get-ChildItem -Path $User | Remove-Item -Recurse -Force
+            Get-Item -Path $User | Remove-Item -Recurse -Force
             Start-Sleep -Milliseconds 100
         }
-        Start-Process explorer
+        # Start-Process explorer
     }
